@@ -1,17 +1,29 @@
-## Install instructions
-
+## Instructions
+Application is JSON API. All requirements was ment, with few more features.
+- Authentication
+- Unit and feature tests
+- Database seeding
+- Role middleware to access Users controller
+- Pagination, Filtering and Order
+### Setup
 To install app, simply clone repository and cd into directory. After that run commands below.
 ```bash
 $ composer install
-$ ./vendor/bin/sail up
+$ cp .env.example .env
+$ ./vendor/bin/sail up -d
+$ ./vendor/bin/sail key:generate
 $ ./vendor/bin/sail artisan migrate
 ```
-
+### Database seeder
 If you want to seed database with dummy data run as below.
 ```
 $ ./vendor/bin/sail db:seed
 ```
-
+### Unit and feature tests
+To run application automated tests run command. Tests will check if authentication works good and also if user could check users list without role id 1.
+```
+$ ./vendor/bin/sail artisan test
+```
 ## API Routes
 ### Login user with givencredentials
 In login route you need to pass login credentials as below (email with valid password). If user is logged in successfully in response you will get access token which is needed in all routes below.
