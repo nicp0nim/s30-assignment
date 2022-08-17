@@ -11,13 +11,6 @@ To install app, simply clone repository and cd into directory. After that run co
 $ composer install
 $ cp .env.example .env
 $ ./vendor/bin/sail up -d
-$ ./vendor/bin/sail key:generate
-$ ./vendor/bin/sail artisan migrate
-```
-### Database seeder
-If you want to seed database with dummy data run as below.
-```
-$ ./vendor/bin/sail db:seed
 ```
 ### Unit and feature tests
 To run application automated tests run command. Tests will check if authentication works good and also if user could check users list without role id 1.
