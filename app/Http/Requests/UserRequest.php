@@ -24,11 +24,11 @@ class UserRequest extends FormRequest
      */
     public function rules()
     {
-        $user_id = isset($this->user) ? $this->user->id : null;
-
+        $user_id = isset($this->user) ? $this->user : null;
+        
         return [
             'email' => 'required|string|email|unique:users,email,'.$user_id.',id',
-            'name' => 'required|string|alpha',
+            'name' => 'required|string|alpha_spaces',
             'roles' => 'required|array',
             'roles.*' => 'integer',
             'password' => [
