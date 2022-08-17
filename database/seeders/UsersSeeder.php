@@ -15,12 +15,18 @@ class UsersSeeder extends Seeder
      */
     public function run()
     {
-        User::factory()->create([
+        $user = User::factory()->create([
             'name' => 'Test User',
             'email' => 'test@example.com',
-            'password' => bcrypt('topsecretpassword1')
+            'password' => bcrypt('Secret!password0')
         ]);
 
-        User::factory(10)->create();
+        $user->roles()->sync([1]);
+
+        $users = User::factory(10)->create();
+
+        $users->each(function ($user) { 
+            $user->roles()->sync(rand(2,4)); 
+        });
     }
 }
